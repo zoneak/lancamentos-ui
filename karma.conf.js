@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/algamoney-ui'),
+      dir: require('path').join(__dirname, './coverage/lancamentos-ui'),
       subdir: '.',
       reporters: [
         { type: 'html' },
