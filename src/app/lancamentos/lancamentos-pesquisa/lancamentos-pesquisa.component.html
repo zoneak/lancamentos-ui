@@ -1,31 +1,59 @@
 <div class="container">
   <div class="p-col">
     <div class="p-grid p-mb-3">
+      <form autocomplete="off" (ngSubmit)="pesquisar()">
         <div class="p-col-12">
-            <h1>Lançamentos</h1>
+          <h1>Lançamentos</h1>
         </div>
 
         <div class="p-col-12 p-fluid p-mb-2">
-            <label>Descrição</label>
-            <input pInputText type="text" name="" id="">
+          <label>Descrição</label>
+          <input pInputText type="text" name="descricao" [(ngModel)]="descricao">
         </div>
 
         <div class="p-col-12 p-mb-2">
-            <label style="display: block;">Vencimento</label>
-            <input pInputText type="text" name="" id="" style="width: 95px;">
+          <label style="display: block;">Vencimento</label>
+          <input pInputText type="text" name="" id="" style="width: 95px;">
 
-            <label class="p-mx-2">até</label>
-            <input pInputText type="text" name="" id="" style="width: 95px;">
+          <label class="p-mx-2">até</label>
+          <input pInputText type="text" name="" id="" style="width: 95px;">
         </div>
 
         <div class="p-col-12">
-            <button pButton type="submit" label="Pesquisar"></button>
+          <button pButton type="submit" label="Pesquisar"></button>
         </div>
+      </form>
     </div>
 
     <div class="p-grid">
         <div class="p-col-12">
-            <app-lancamentos-grid [lancamentos]="lancamentos"></app-lancamentos-grid>
+          <p-table [value]="lancamentos" styleClass="p-datatable-gridlines p-datatable-sm" [paginator]="true" [rows]="5" [responsive]="true">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Pessoa</th>
+                    <th>Descrição</th>
+                    <th style="width: 120px;">Vencimento</th>
+                    <th style="width: 120px;">Pagamento</th>
+                    <th class="p-text-center" style="width: 120px;">Valor</th>
+                    <th class="p-text-center" style="width: 100px;">Ações</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-lancamento>
+                <tr>
+                    <td>{{lancamento.pessoa}}</td>
+                    <td>{{lancamento.descricao}}</td>
+                    <td class="p-text-center">{{lancamento.dataVencimento | date:'dd/MM/y'}}</td>
+                    <td class="p-text-center">{{lancamento.dataPagamento | date:'dd/MM/y'}}</td>
+                    <td class="p-text-right">
+                        <span [ngStyle]="{ color: lancamento.tipo === 'DESPESA' ? 'red' : 'blue' }">{{lancamento.valor | number:'1.2-2'}}</span>
+                    </td>
+                    <td class="p-text-center">
+                        <a pButton icon="fas fa-edit" class="p-mr-1" pTooltip="Editar" tooltipPosition="top"></a>
+                        <button pButton icon="fas fa-trash-alt" class="p-button-danger" pTooltip="Excluir" tooltipPosition="top"></button>
+                    </td>
+                </tr>
+            </ng-template>
+          </p-table>
         </div>
 
         <div class="p-col-12">
