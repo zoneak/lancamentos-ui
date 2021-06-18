@@ -3,10 +3,12 @@ import { Injectable } from '@angular/core';
 
 import * as moment from 'moment';
 
-export interface LancamentoFiltro {
-  descricao: string;
-  dataVencimentoInicio: Date;
-  dataVencimentoFim: Date;
+export class LancamentoFiltro {
+  descricao!: string;
+  dataVencimentoInicio!: Date;
+  dataVencimentoFim!: Date;
+  pagina: number = 0;
+  itensPorPagina: number = 5;
 }
 
 @Injectable({
@@ -38,7 +40,21 @@ export class LancamentoService {
       params = params.set('dataVencimentoAte', moment(filtro.dataVencimentoFim).format('YYYY-MM-DD'));
     }
 
-    return this.http.get(`${this.lancamentosUrl}?resumo`, { headers, params })
-      .toPromise();
+    /* Paginação */
+    params = params.set('page', filtro.pagina.toString());
+    params = params.set('size', filtro.itensPorPagina.toString());
+
+    return this.http.get(`${this.lancamentosUrl}?resumo`, { headers, params }).toPromise().then(response => {
+      const responseJson = JSON.parse(JSON.stringify(response));
+      const lancamentos = responseJson.content;
+
+      const resultado = {
+        lancamentos: lancamentos,
+        total: responseJson.totalElements
+      }
+
+      return resultado;
+    });
+
   }
 }
