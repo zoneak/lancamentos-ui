@@ -1,23 +1,48 @@
 <div class="container">
   <div class="p-col">
-    <div class="p-grid p-mb-3">
-        <div class="p-col-12">
-            <h1>Pessoas</h1>
-        </div>
-
-        <div class="p-col-12 p-fluid p-mb-2">
-            <label>Nome</label>
-            <input pInputText type="text" name="" id="">
-        </div>
-
-        <div class="p-col-12">
-            <button pButton type="submit" label="Pesquisar"></button>
-        </div>
-    </div>
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+      <div class="p-field">
+          <h1>Pessoas</h1>
+      </div>
+      <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-12">
+              <label>Nome</label>
+              <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
+          </div>
+      </div>
+      <div class="p-field">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+    </form>
 
     <div class="p-grid">
         <div class="p-col-12">
-            <app-pessoas-grid [pessoas]="pessoas"></app-pessoas-grid>
+          <p-table [value]="pessoas" styleClass="p-datatable-gridlines p-datatable-sm"
+            [paginator]="true" [rows]="filtro.itensPorPagina"
+            [lazy]="true" [totalRecords]="totalRegistros"
+            (onLazyLoad)="aoMudarPagina($event)">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nome</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>Status</th>
+                    <th class="p-text-center" style="width: 100px;">Ações</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-pessoa>
+                <tr>
+                    <td>{{pessoa.nome}}</td>
+                    <td>{{pessoa.endereco.cidade}}</td>
+                    <td>{{pessoa.endereco.estado}}</td>
+                    <td>{{pessoa.ativo === true ? 'Ativo' : 'Inativo'}}</td>
+                    <td class="p-text-center">
+                        <a pButton icon="fas fa-edit" class="p-mr-1" pTooltip="Editar" tooltipPosition="top"></a>
+                        <button pButton icon="fas fa-trash-alt" class="p-button-danger" pTooltip="Excluir" tooltipPosition="top"></button>
+                    </td>
+                </tr>
+            </ng-template>
+          </p-table>
         </div>
 
         <div class="p-col-12">
