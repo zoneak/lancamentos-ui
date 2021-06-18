@@ -1,29 +1,30 @@
 <div class="container">
   <div class="p-col">
-    <div class="p-grid p-mb-3">
-      <form autocomplete="off" (ngSubmit)="pesquisar()">
-        <div class="p-col-12">
-          <h1>Lançamentos</h1>
-        </div>
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+      <div class="p-field">
+        <h1>Lançamentos</h1>
+      </div>
 
-        <div class="p-col-12 p-fluid p-mb-2">
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12">
           <label>Descrição</label>
           <input pInputText type="text" name="descricao" [(ngModel)]="descricao">
         </div>
 
-        <div class="p-col-12 p-mb-2">
+        <div class="p-field p-col-12 p-md-5">
           <label style="display: block;">Vencimento</label>
-          <input pInputText type="text" name="" id="" style="width: 95px;">
-
-          <label class="p-mx-2">até</label>
-          <input pInputText type="text" name="" id="" style="width: 95px;">
+          <div class="p-formgroup-inline">
+            <p-calendar dateFormat="dd/mm/yy" name="vencimentoInicio" [(ngModel)]="dataVencimentoInicio"></p-calendar>
+            <label class="p-mx-2" style="align-self: center;">até</label>
+            <p-calendar dateFormat="dd/mm/yy" name="vencimentoFim" [(ngModel)]="dataVencimentoFim"></p-calendar>
+          </div>
         </div>
+      </div>
 
-        <div class="p-col-12">
-          <button pButton type="submit" label="Pesquisar"></button>
-        </div>
-      </form>
-    </div>
+      <div class="p-field">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+    </form>
 
     <div class="p-grid">
         <div class="p-col-12">
@@ -50,6 +51,13 @@
                     <td class="p-text-center">
                         <a pButton icon="fas fa-edit" class="p-mr-1" pTooltip="Editar" tooltipPosition="top"></a>
                         <button pButton icon="fas fa-trash-alt" class="p-button-danger" pTooltip="Excluir" tooltipPosition="top"></button>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage" let-lancamento>
+                <tr>
+                    <td>
+                        Nenhum lançamento encontrado
                     </td>
                 </tr>
             </ng-template>
