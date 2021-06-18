@@ -57,4 +57,11 @@ export class LancamentoService {
     });
 
   }
+
+  excluir(codigo: number): Promise<void> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Basic YWRtaW5AYWsuY29tOmFkbWlu');
+
+    return this.http.delete(`${this.lancamentosUrl}/${codigo}`, { headers }).toPromise().then();
+  }
 }
