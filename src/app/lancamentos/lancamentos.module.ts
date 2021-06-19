@@ -14,7 +14,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
-
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -37,6 +37,7 @@ import { TooltipModule } from 'primeng/tooltip';
     CalendarModule,
     SelectButtonModule,
     DropdownModule,
+    ToastModule,
     SharedModule
   ]
 })
