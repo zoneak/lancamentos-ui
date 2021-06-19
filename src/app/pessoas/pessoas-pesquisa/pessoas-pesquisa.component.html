@@ -20,7 +20,7 @@
           <p-table [value]="pessoas" styleClass="p-datatable-gridlines p-datatable-sm"
             [paginator]="true" [rows]="filtro.itensPorPagina"
             [lazy]="true" [totalRecords]="totalRegistros"
-            (onLazyLoad)="aoMudarPagina($event)">
+            (onLazyLoad)="aoMudarPagina($event)" #tabela>
             <ng-template pTemplate="header">
                 <tr>
                     <th>Nome</th>
@@ -38,7 +38,9 @@
                     <td>{{pessoa.ativo === true ? 'Ativo' : 'Inativo'}}</td>
                     <td class="p-text-center">
                         <a pButton icon="fas fa-edit" class="p-mr-1" pTooltip="Editar" tooltipPosition="top"></a>
-                        <button pButton icon="fas fa-trash-alt" class="p-button-danger" pTooltip="Excluir" tooltipPosition="top"></button>
+                        <button pButton icon="fas fa-trash-alt" class="p-button-danger"
+                          pTooltip="Excluir" tooltipPosition="top"
+                          (click)="confirmarExclusao(pessoa)"></button>
                     </td>
                 </tr>
             </ng-template>
@@ -51,3 +53,4 @@
     </div>
   </div>
 </div>
+<p-toast position="bottom-right"></p-toast>

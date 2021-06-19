@@ -53,4 +53,11 @@ export class PessoaService {
       return responseJSON.content;
     });
   }
+
+  excluir(codigo: number): Promise<void> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Basic YWRtaW5AYWsuY29tOmFkbWlu');
+
+    return this.http.delete(`${this.pessoasUrl}/${codigo}`, { headers }).toPromise().then();
+  }
 }

@@ -11,8 +11,7 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { FormsModule } from '@angular/forms';
 import { InputMaskModule } from 'primeng/inputmask';
-
-
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,8 @@ import { InputMaskModule } from 'primeng/inputmask';
     TooltipModule,
     InputMaskModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ToastModule
   ]
 })
 export class PessoasModule { }
