@@ -1,3 +1,4 @@
+import { ErrorHandlerService } from './../../core/error-handler.service';
 import { LazyLoadEvent, MessageService, ConfirmationService } from 'primeng/api';
 import { PessoaService, PessoaFiltro } from './../pessoa.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -18,7 +19,8 @@ export class PessoasPesquisaComponent implements OnInit {
   constructor(
     private pessoaService: PessoaService,
     private messageService: MessageService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+    private errorHandler: ErrorHandlerService
   ){}
 
   ngOnInit(): void {
@@ -27,10 +29,12 @@ export class PessoasPesquisaComponent implements OnInit {
 
   pesquisar(pagina = 0) {
     this.filtro.pagina = pagina;
-    this.pessoaService.pesquisar(this.filtro).then(resultado => {
+    this.pessoaService.pesquisar(this.filtro)
+    .then(resultado => {
       this.totalRegistros = resultado.total,
       this.pessoas = resultado.pessoas
-    });
+    })
+    .catch(error => this.errorHandler.handle(error));
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
@@ -48,11 +52,13 @@ export class PessoasPesquisaComponent implements OnInit {
   }
 
   excluir(pessoa: any) {
-    this.pessoaService.excluir(pessoa.codigo).then(() => {
+    this.pessoaService.excluir(pessoa.codigo)
+    .then(() => {
       this.grid.first = 0;
       this.pesquisar(0);
       this.messageService.add({severity: 'success', summary: 'Pessoa excluída com sucesso!'});
-    });
+    })
+    .catch(error => this.errorHandler.handle(error));
   }
 
 }
