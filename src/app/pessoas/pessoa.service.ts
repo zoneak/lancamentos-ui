@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export class PessoaFiltro {
@@ -59,5 +59,13 @@ export class PessoaService {
     headers = headers.set('Authorization', 'Basic YWRtaW5AYWsuY29tOmFkbWlu');
 
     return this.http.delete(`${this.pessoasUrl}/${codigo}`, { headers }).toPromise().then();
+  }
+
+  alterarStatusAtivo(codigo: number, ativo: boolean): Promise<void> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Basic YWRtaW5AYWsuY29tOmFkbWlu');
+    headers = headers.set('Content-Type', 'application/json');
+
+    return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers }).toPromise().then();
   }
 }
