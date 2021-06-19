@@ -49,12 +49,12 @@
                     <td class="p-text-center">{{lancamento.dataVencimento | date:'dd/MM/y'}}</td>
                     <td class="p-text-center">{{lancamento.dataPagamento | date:'dd/MM/y'}}</td>
                     <td class="p-text-right">
-                        <span [ngStyle]="{ color: lancamento.tipo === 'DESPESA' ? 'red' : 'blue' }">{{lancamento.valor | number:'1.2-2'}}</span>
+                        <span [ngStyle]="{ color: lancamento.tipo === 'DESPESA' ? 'red' : 'blue' }">{{lancamento.valor | currency:'BRL':'symbol':'1.2-2'}}</span>
                     </td>
                     <td class="p-text-center">
                         <a pButton icon="fas fa-edit" class="p-mr-1" pTooltip="Editar" tooltipPosition="top"></a>
                         <button pButton icon="fas fa-trash-alt" class="p-button-danger" pTooltip="Excluir" tooltipPosition="top"
-                          (click)="excluir(lancamento)"></button>
+                          (click)="confirmarExclusao(lancamento)"></button>
                     </td>
                 </tr>
             </ng-template>
