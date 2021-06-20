@@ -35,7 +35,8 @@
         </div>
         <div class="p-field p-col-12 p-md-6">
           <label>Pessoa</label>
-          <p-dropdown [options]="pessoas" [filter]="true" name="pessoa" placeholder="Selecione" ngModel #pessoa="ngModel" [required]="true"></p-dropdown>
+          <p-dropdown [options]="pessoas" [filter]="true" name="pessoa" placeholder="Selecione" ngModel #pessoa="ngModel" [required]="true"
+            optionLabel="nome" optionValue="codigo"></p-dropdown>
         </div>
         <div class="p-field p-col-12">
           <label>Observação</label>
