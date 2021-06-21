@@ -16,6 +16,7 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { ToastModule } from 'primeng/toast';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ToastModule } from 'primeng/toast';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     InputTextModule,
     InputTextareaModule,
     InputNumberModule,

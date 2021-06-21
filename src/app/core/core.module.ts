@@ -9,6 +9,7 @@ import { ErrorHandlerService } from './error-handler.service';
 import { LancamentoService } from '../lancamentos/lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { CategoriaService } from './../categorias/categoria.service';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { CategoriaService } from './../categorias/categoria.service';
   imports: [
     CommonModule,
     ConfirmDialogModule,
+    RouterModule
   ],
   providers: [
     LancamentoService,
