@@ -1,3 +1,4 @@
+import { Lancamento } from './../core/model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -63,5 +64,14 @@ export class LancamentoService {
     headers = headers.set('Authorization', 'Basic YWRtaW5AYWsuY29tOmFkbWlu');
 
     return this.http.delete(`${this.lancamentosUrl}/${codigo}`, { headers }).toPromise().then();
+  }
+
+  adicionar(lancamento: Lancamento): Promise<Lancamento> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Basic YWRtaW5AYWsuY29tOmFkbWlu');
+    headers = headers.set('Content-Type', 'application/json');
+
+    return this.http.post(this.lancamentosUrl, JSON.stringify(lancamento), { headers })
+      .toPromise().then(response => JSON.parse(JSON.stringify(response)));
   }
 }
