@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,11 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class LoginFormComponent implements OnInit {
 
   constructor(
-    private title: Title
+    private title: Title,
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {
     this.title.setTitle('Login');
+  }
+
+  login(usuario: string, senha: string) {
+    this.auth.login(usuario, senha);
   }
 
 }

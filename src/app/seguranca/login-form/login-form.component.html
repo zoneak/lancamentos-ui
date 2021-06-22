@@ -7,16 +7,16 @@
         </div>
         <div class="p-field p-col-12 p-md-6 p-md-offset-3">
           <label>E-mail</label>
-          <input pInputText type="email" name="email" ngModel #email="ngModel" required email>
-          <app-message [control]="email" error="required" text="Informe um e-mail"></app-message>
-          <app-message [control]="email" error="email" text="E-mail inválido"></app-message>
+          <input pInputText type="email" name="usuario" ngModel #usuario="ngModel" required email>
+          <app-message [control]="usuario" error="required" text="Informe um e-mail"></app-message>
+          <app-message [control]="usuario" error="email" text="E-mail inválido"></app-message>
         </div>
         <div class="p-field p-col-12 p-md-6 p-md-offset-3">
           <label>Senha</label>
           <input pInputText type="password" name="senha" ngModel #senha required>
         </div>
         <div class="p-field p-col-12 p-md-6 p-md-offset-3">
-          <button pButton type="submit" label="Login" [disabled]="!loginForm.valid"></button>
+          <button pButton type="submit" label="Login" [disabled]="!loginForm.valid" (click)="login(usuario.value, senha.value)"></button>
         </div>
       </div>
     </form>

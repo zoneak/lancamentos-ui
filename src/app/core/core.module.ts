@@ -6,12 +6,14 @@ import { Title } from '@angular/platform-browser';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessageService, ConfirmationService } from 'primeng/api';
 
+import { AuthService } from './../seguranca/auth.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorHandlerService } from './error-handler.service';
 import { LancamentoService } from '../lancamentos/lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { CategoriaService } from './../categorias/categoria.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -29,12 +31,14 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
     RouterModule
   ],
   providers: [
+    AuthService,
     LancamentoService,
     PessoaService,
     CategoriaService,
     MessageService,
     ConfirmationService,
     ErrorHandlerService,
+    JwtHelperService,
     Title,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
