@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="p-col">
+    <form autocomplete="off" #loginForm="ngForm">
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12 p-md-6 p-md-offset-3">
+          <h1>Login</h1>
+        </div>
+        <div class="p-field p-col-12 p-md-6 p-md-offset-3">
+          <label>E-mail</label>
+          <input pInputText type="email" name="email" ngModel #email="ngModel" required email>
+          <app-message [control]="email" error="required" text="Informe um e-mail"></app-message>
+          <app-message [control]="email" error="email" text="E-mail inválido"></app-message>
+        </div>
+        <div class="p-field p-col-12 p-md-6 p-md-offset-3">
+          <label>Senha</label>
+          <input pInputText type="password" name="senha" ngModel #senha required>
+        </div>
+        <div class="p-field p-col-12 p-md-6 p-md-offset-3">
+          <button pButton type="submit" label="Login" [disabled]="!loginForm.valid"></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
