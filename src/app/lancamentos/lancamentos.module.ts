@@ -1,3 +1,4 @@
+import { LancamentosRoutingModule } from './lancamentos-routing.module';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,8 +17,6 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { ToastModule } from 'primeng/toast';
-import { RouterModule } from '@angular/router';
-
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule,
     InputTextModule,
     InputTextareaModule,
     InputNumberModule,
@@ -39,7 +37,8 @@ import { RouterModule } from '@angular/router';
     SelectButtonModule,
     DropdownModule,
     ToastModule,
-    SharedModule
+    SharedModule,
+    LancamentosRoutingModule
   ]
 })
 export class LancamentosModule { }
