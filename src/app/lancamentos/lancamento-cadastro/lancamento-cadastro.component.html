@@ -46,7 +46,7 @@
       </div>
       <div class="p-field">
         <button pButton type="submit" class="p-mr-2" [disabled]="!lancamentoForm.valid">Salvar</button>
-        <button pButton type="button" class="p-button-info p-mr-2">Novo</button>
+        <button pButton type="button" class="p-button-info p-mr-2" (click)="novo(lancamentoForm)">Novo</button>
         <a routerLink="/lancamentos">Voltar para pesquisa</a>
       </div>
     </form>
