@@ -16,9 +16,10 @@
           <input pInputText type="password" name="senha" ngModel #senha required>
         </div>
         <div class="p-field p-col-12 p-md-6 p-md-offset-3">
-          <button pButton type="submit" label="Login" [disabled]="!loginForm.valid" (click)="login(usuario.value, senha.value)"></button>
+          <button pButton type="submit" label="Login" [disabled]="!loginForm.valid" (click)="login(usuario.value, senha.value); senha.value = '';"></button>
         </div>
       </div>
     </form>
   </div>
 </div>
+<p-toast position="bottom-right"></p-toast>

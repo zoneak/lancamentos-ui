@@ -1,3 +1,4 @@
+import { ToastModule } from 'primeng/toast';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -19,7 +20,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     SharedModule,
     InputTextModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    ToastModule
   ]
 })
 export class SegurancaModule { }

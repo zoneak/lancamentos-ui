@@ -29,7 +29,14 @@ export class AuthService {
         this.armazenarToken(JSON.parse(JSON.stringify(response)).access_token);
       })
       .catch(response => {
-        console.log(response);
+        if (response.status === 400) {
+          const responseJson = JSON.parse(JSON.stringify(response)).error;
+          if (responseJson.error === 'invalid_grant') {
+            return Promise.reject('Usuário ou senha inválida!');
+          }
+        }
+
+        return Promise.reject(response);
       });
   }
 
