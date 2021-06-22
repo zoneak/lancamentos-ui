@@ -40,7 +40,7 @@
                         (click)="alterarStatusAtivo(pessoa)">{{pessoa.ativo ? 'Ativo' : 'Inativo'}}</a>
                     </td>
                     <td class="p-text-center">
-                        <a pButton icon="fas fa-edit" class="p-mr-1" pTooltip="Editar" tooltipPosition="top"></a>
+                        <a pButton icon="fas fa-edit" class="p-mr-1" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/pessoas', pessoa.codigo]"></a>
                         <button pButton icon="fas fa-trash-alt" class="p-button-danger"
                           pTooltip="Excluir" tooltipPosition="top"
                           (click)="confirmarExclusao(pessoa)"></button>
@@ -51,7 +51,7 @@
         </div>
 
         <div class="p-col-12">
-            <a pButton type="submit" label="Nova Pessoa"></a>
+            <a pButton type="submit" label="Nova Pessoa" routerLink="/pessoas/nova"></a>
         </div>
     </div>
   </div>

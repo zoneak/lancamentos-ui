@@ -1,3 +1,4 @@
+import { PessoasRoutingModule } from './pessoas-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -28,7 +29,8 @@ import { ToastModule } from 'primeng/toast';
     InputMaskModule,
     FormsModule,
     SharedModule,
-    ToastModule
+    ToastModule,
+    PessoasRoutingModule
   ]
 })
 export class PessoasModule { }
