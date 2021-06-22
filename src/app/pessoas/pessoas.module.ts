@@ -18,10 +18,7 @@ import { ToastModule } from 'primeng/toast';
     PessoaCadastroComponent,
     PessoasPesquisaComponent
   ],
-  exports: [
-    PessoaCadastroComponent,
-    PessoasPesquisaComponent
-  ],
+  exports: [],
   imports: [
     CommonModule,
     InputTextModule,
