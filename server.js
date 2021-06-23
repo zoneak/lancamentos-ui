@@ -23,4 +23,4 @@ app.get('/*', function(req, res) {
   res.sendFile(__dirname + '/dist/lancamentos-ui/index.html');
 });
 
-app.listen(4200);
+app.listen(process.env.PORT || 4200);
