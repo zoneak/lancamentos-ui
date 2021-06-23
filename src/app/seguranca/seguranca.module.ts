@@ -13,6 +13,7 @@ import { MoneyHttpInterceptor } from './money-http-interceptor';
 import { SharedModule } from './../shared/shared.module';
 import { SegurancaRoutingModule } from './seguranca-routing.module';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { LogoutService } from './logout.service';
 import { environment } from './../../environments/environment';
 
 export function tokenGetter() {
@@ -47,7 +48,8 @@ export function tokenGetter() {
       useClass: MoneyHttpInterceptor,
       multi: true
     },
-    AuthGuard
+    AuthGuard,
+    LogoutService
   ]
 })
 export class SegurancaModule { }

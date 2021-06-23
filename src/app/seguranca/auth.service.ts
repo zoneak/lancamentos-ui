@@ -79,6 +79,11 @@ export class AuthService {
       });
   }
 
+  limparAccessToken() {
+    localStorage.removeItem('token');
+    this.jwtPayload = null;
+  }
+
   private armazenarToken(token: string) {
     this.jwtPayload = this.jwtHelperService.decodeToken(token);
     localStorage.setItem('token', token);
