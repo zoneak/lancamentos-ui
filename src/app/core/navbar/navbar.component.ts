@@ -9,11 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   exibindoMenu = false;
-  usuarioLogado = '';
-  constructor(private auth: AuthService) { }
+  constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
-    this.usuarioLogado = this.auth.jwtPayload?.nome;
   }
 
 }
