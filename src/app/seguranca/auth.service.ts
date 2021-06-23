@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -7,13 +8,14 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
 
-  oathTokenUrl = 'http://localhost:8082/oauth/token';
+  oathTokenUrl: string;
   jwtPayload: any;
 
   constructor(
     private http: HttpClient,
     private jwtHelperService: JwtHelperService
   ) {
+    this.oathTokenUrl = `${environment.apiUrl}/oauth/token`;
     this.carregarToken();
   }
 
