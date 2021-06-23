@@ -13,7 +13,6 @@ import { LancamentoService } from '../lancamentos/lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { CategoriaService } from './../categorias/categoria.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
-import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -38,7 +37,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     MessageService,
     ConfirmationService,
     ErrorHandlerService,
-    JwtHelperService,
     Title,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]

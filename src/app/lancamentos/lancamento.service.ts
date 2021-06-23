@@ -42,14 +42,16 @@ export class LancamentoService {
     params = params.set('page', filtro.pagina.toString());
     params = params.set('size', filtro.itensPorPagina.toString());
 
-    return this.http.get(`${this.lancamentosUrl}?resumo`, { params }).toPromise().then(response => {
-      const responseJson = JSON.parse(JSON.stringify(response));
-      const lancamentos = responseJson.content;
+    return this.http.get(`${this.lancamentosUrl}?resumo`, { params })
+      .toPromise()
+      .then(response => {
+        const responseJson = JSON.parse(JSON.stringify(response));
+        const lancamentos = responseJson.content;
 
-      const resultado = {
-        lancamentos: lancamentos,
-        total: responseJson.totalElements
-      }
+        const resultado = {
+          lancamentos: lancamentos,
+          total: responseJson.totalElements
+        }
 
       return resultado;
     });
