@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 
 import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
 
+import { AuthService } from './../../seguranca/auth.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
 
@@ -23,6 +24,7 @@ export class LancamentosPesquisaComponent implements OnInit {
       private messageService: MessageService,
       private confirmation: ConfirmationService,
       private errorHandler: ErrorHandlerService,
+      public auth: AuthService,
       private title: Title
     ) {}
 
