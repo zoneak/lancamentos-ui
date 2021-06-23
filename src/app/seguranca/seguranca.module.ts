@@ -8,6 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 
+import { AuthGuard } from './auth.guard';
 import { MoneyHttpInterceptor } from './money-http-interceptor';
 import { SharedModule } from './../shared/shared.module';
 import { SegurancaRoutingModule } from './seguranca-routing.module';
@@ -46,7 +47,7 @@ export function tokenGetter() {
       useClass: MoneyHttpInterceptor,
       multi: true
     },
-
+    AuthGuard
   ]
 })
 export class SegurancaModule { }
